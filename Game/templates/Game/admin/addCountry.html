@@ -1,0 +1,51 @@
+{% extends 'Game/admin/base.html' %}
+
+{% block title %}
+	DASHBOARD
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+		<div class="breadcrumb bg-light">
+			<span class="breadcrumb-title text-dark">
+				<b>
+					Add Country & City
+				</b>
+			</span>
+		</div>
+		<div class="mt-2">
+			<div class="row d-flex justify-content-center">
+				<div class="col-md-6">
+					<div class="card">
+						<div class="card-content">
+							<div class="card-body">
+								<form action="#" method="POST">
+									{% if messages %}
+										{% for message in messages %}
+											<div class="alert alert-success">
+												{{ message }}
+											</div>
+										{% endfor %}
+									{% endif %}
+									{% csrf_token %}
+									<h5>ADD COUNTRY & CITY</h5>
+									<div class="form-group">
+										<label for="id_country_name"><b>Country</b></label>
+										<input type="text" name="country_name" maxlength="255" required id="id_country_name" class="form-control">
+									</div>
+									<div class="form-group">
+										<label for="id_city_name"><b>City</b></label>
+										<input type="text" name="city_name" maxlength="255" required id="id_city_name" class="form-control">
+									</div>
+									<div class="form-group">
+										<input type="submit" style="font-weight: bold;" name="" class="btn btn-primary" value="Add Country & City">
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

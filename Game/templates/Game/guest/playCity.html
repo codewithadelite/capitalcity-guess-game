@@ -1,0 +1,41 @@
+{% extends 'Game/guest/base.html' %}
+
+{% block title %}
+	DASHBOARD
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+		<div class="breadcrumb bg-light">
+			<span class="breadcrumb-title text-dark">
+				<b>
+					Guess City
+				</b>
+			</span>
+		</div>
+		<div>
+			<div class="row d-flex justify-content-center mt-5">
+				<div class="col-md-6">
+					<div class="card">
+						<div class="card-body">
+							<form action="" method="POST">
+								{% csrf_token %}
+								<div class="form-group">
+									<h4>Which city has the country called </h4>
+									<label style="font-weight: 700;">
+										{{ country_name }}
+									</label>
+									<input type="text" name="city" class="form-control" required>
+									<input type="hidden" name="question_id" class="form-control" value="{{ question_id }}">
+								</div>
+								<div class="form-group">
+									<input type="submit" class="btn btn-primary px-4 py-2" name="" value="Submit Answer">
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

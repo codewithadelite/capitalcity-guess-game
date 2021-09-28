@@ -1,0 +1,79 @@
+{% extends 'Game/admin/base.html' %}
+
+{% block title %}
+	DASHBOARD
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+		<div class="breadcrumb bg-light">
+			<span class="breadcrumb-title text-dark">
+				<b>
+					Dashboard
+				</b>
+			</span>
+		</div>
+		<div class="row crow">
+			<div class="col-md-4">
+				<a href="">
+					<div class="card ccard">
+						<div class="card-content">
+							<div class="card-body">
+								<p>
+									<span class="cnumber">
+										{{ total_players }}
+									</span>
+								</p>
+								<p>
+									<span class="ctitle">
+										PLAYERS REGISTERED
+									</span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4">
+				<a href="{% url 'viewCountries' %}">
+					<div class="card ccard">
+						<div class="card-content">
+							<div class="card-body">
+								<p>
+									<span class="cnumber">
+										{{ total_country }}
+									</span>
+								</p>
+								<p>
+									<span class="ctitle">
+										COUNTRIES
+									</span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4">
+				<a href="{% url 'viewQuiz' %}">
+					<div class="card ccard">
+						<div class="card-content">
+							<div class="card-body">
+								<p>
+									<span class="cnumber">
+										{{ total_quiz }}
+									</span>
+								</p>
+								<p>
+									<span class="ctitle">
+										QUIZES
+									</span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}

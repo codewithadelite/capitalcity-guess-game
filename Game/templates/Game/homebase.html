@@ -1,0 +1,142 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="cz">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{% block title %}{% endblock %}</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="{% static 'js/WOW/css/libs/animate.css' %}">
+ <link rel="stylesheet" href="{% static 'js/WOW/css/site.css' %}">
+
+<style type="text/css">
+	body{
+		font-family: 'Montserrat', sans-serif;
+	}
+	td{
+		font-weight:bold;
+	}
+	#sub{
+		font-weight: bold;
+	}
+	.content{
+		background-image: linear-gradient(to bottom, #4A4090, #372E6C);
+		background-size: cover;
+	}
+	.content h1{
+		font-size:40px;
+		color: white;
+	}
+	.content p{
+		margin-top: 35px;
+		margin-bottom: 35px;
+		font-size: 25px;
+	}
+	.content img{
+		width: 45%;
+	}
+	.content2{
+		background-image: url(images/bg.png);
+		background-size: cover;
+	}
+	.content2 h2{
+		font-weight: 800;
+	}
+	.content2 .cat{
+		cursor: pointer;
+		margin-top: 10px;
+		border-radius: 0px;
+		border:0px;
+		background-color: #F9F9F9;
+		box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+		border-bottom: 4px solid lightblue;
+
+	}
+	.content2 .cat:hover{
+
+		box-shadow: none;
+
+	}
+	.content2 img{
+		width: 85%;
+		height: 100px;
+	}
+	.content2 h3{
+		font-size: 21px;
+		margin-top: 20px;
+	}
+	#card{
+		
+		box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+	}
+	nav{
+		border-bottom: 4px solid lightblue;
+	}
+	#btn{
+		box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);	
+	}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow sticky-top">
+	<div class="container">
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <a class="navbar-brand" href="#">
+	  	<b style="color: #6b3eb3;font-size: 22px;">CAPITAL CITY</b>
+	  	
+	  </a>
+
+	  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+	    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+	      <li class="nav-item active">
+	        <a class="nav-link" href="#"><b>Home</b> <span class="sr-only">(current)</span></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="#"><b>About</b></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="#"><b>Contact Us</b></a>
+	      </li>
+	       <li class="nav-item dropdown">
+	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-weight: 900;">
+	          <i class="fa fa-sign-in ml-3" style="color: #6b3eb3;"></i> Log In
+	        </a>
+	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	          <a class="dropdown-item" href="{% url 'adminLogin' %}" style="font-weight: 900;">Admin</a>
+	          <a class="dropdown-item" href="{% url 'guestLogin' %}" style="font-weight: 900;">Player</a>
+	        </div>
+	      </li>
+	    </ul>
+	  </div>
+	</div>
+</nav>
+{% block body %}{% endblock %}
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="{% static 'js/WOW/dist/wow.js' %}"></script>
+  <script>
+    wow = new WOW(
+      {
+        animateClass: 'animated',
+        offset:       100,
+        callback:     function(box) {
+          console.log("WOW: animating <" + box.tagName.toLowerCase() + ">")
+        }
+      }
+    );
+    wow.init();
+    document.getElementById('moar').onclick = function() {
+      var section = document.createElement('section');
+      section.className = 'section--purple wow fadeInDown';
+      this.parentNode.insertBefore(section, this);
+    };
+  </script>
+</body>
+</html>

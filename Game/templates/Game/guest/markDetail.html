@@ -1,0 +1,117 @@
+{% extends 'Game/guest/base.html' %}
+
+{% block title %}
+	DASHBOARD
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+		<div class="breadcrumb bg-light">
+			<span class="breadcrumb-title text-dark">
+				<b>
+					My Marks
+				</b>
+			</span>
+		</div>
+		<div>
+			<div class="row d-flex justify-content-center mt-5">
+				<div class="col-md-5">
+					<h4>
+						<b>QUIZ PROVIDED</b>
+					</h4>
+					<table class="table table-collapse table-hover table-bordered">
+						<tbody>
+							<tr>
+								<td>
+									<b style="color: #e53e1e;">Quiz Name</b>
+								</td>
+								<td>{{answer.quiz}}</td>
+							</tr>
+							<tr>
+								<td>
+									<b style="color: #e53e1e;">Country</b>
+								</td>
+								<td>{{ answer.country.country_name }}</td>
+							</tr>
+							<tr>
+								<td>
+									<b style="color: #e53e1e;">City</b>
+								</td>
+								<td>{{ answer.country.city_name }}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="col-md-5">
+					<h4>
+						<b>YOUR ANSWER</b>
+					</h4>
+					<table class="table table-collapse table-hover table-bordered">
+						<tbody>
+							<tr>
+								<td>
+									<b style="color: #e53e1e;">Country</b>
+								</td>
+								
+
+								{% if answer.is_country %}
+									<td>
+										{{ answer.name }}
+										<span class="badge badge-danger">
+											<b>This is your answer</b>
+										</span>
+									</td>
+								{% else %}
+									<td>
+										{{ answer.country.country_name }}
+									</td>
+								{% endif %}
+							</tr>
+							<tr>
+								<td>
+									<b style="color: #e53e1e;">City</b>
+								</td>
+								{% if answer.is_country %}
+									<td>
+										{{ answer.country.city_name }}
+									</td>
+									
+								{% else %}
+									<td>
+										{{ answer.name }}
+										<span class="badge badge-danger">
+											<b>This is your answer</b>
+										</span>
+									</td>
+								{% endif %}
+							</tr>
+							<tr>
+								<td>
+									<b style="color: #e53e1e;">Points</b>
+								</td>
+								<td>
+									{% if answer.is_true %}
+										1 / 1
+									{% else %}
+										0 / 1
+									{% endif %}
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="jumbotron text-center">
+				{% if answer.is_true %}
+					<h4 class="jumbotron-text text-success" >
+						<b>Congratulations!! Your Answer Was Correct</b>
+					</h4>
+				{% else %}
+					<h4 class="jumbotron-text text-danger" >
+						<b>Sorry!! Your Answer Was Incorrect</b>
+					</h4>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

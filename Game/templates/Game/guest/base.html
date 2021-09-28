@@ -1,0 +1,169 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="cz">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{% block title %}{% endblock %}</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="{% static 'js/WOW/css/libs/animate.css' %}">
+ <link rel="stylesheet" href="{% static 'js/WOW/css/site.css' %}">
+
+<style type="text/css">
+	body{
+		font-family: 'Montserrat', sans-serif;
+	}
+	td{
+		font-weight:bold;
+	}
+	label{
+		font-weight: bold;
+		margin-top: 2px;
+	}
+	#sub{
+		font-weight: bold;
+	}
+	.content{
+		background-image: linear-gradient(to bottom, #4A4090, #372E6C);
+		background-size: cover;
+	}
+	.content h1{
+		font-size:40px;
+		color: white;
+	}
+	.content p{
+		margin-top: 35px;
+		margin-bottom: 35px;
+		font-size: 25px;
+	}
+	.content img{
+		width: 45%;
+	}
+	.content2{
+		background-image: url(images/bg.png);
+		background-size: cover;
+		height:400px;
+	}
+	.content2 h2{
+		font-weight: 800;
+	}
+	.content2 .cat{
+		cursor: pointer;
+		margin-top: 10px;
+		border-radius: 0px;
+		border:0px;
+		background-color: #F9F9F9;
+		box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+		border-bottom: 4px solid lightblue;
+
+	}
+	.content2 .cat:hover{
+
+		box-shadow: none;
+
+	}
+	.content2 img{
+		width: 85%;
+		height: 100px;
+	}
+	.content2 h3{
+		font-size: 21px;
+		margin-top: 20px;
+	}
+	#card{
+		
+		box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+	}
+	nav{
+		border-bottom: 4px solid lightblue;
+	}
+	#btn{
+		box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);	
+	}
+	.crow a{
+		text-decoration: none;
+		color: #212529;
+	}
+	.ccard{
+		border-left: 5px solid lightblue;
+		box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+	}
+	.pcard{
+		border-left: 50px solid lightblue;
+		box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+	}
+	.ccard:hover{
+		box-shadow: none;
+	}
+	.ccard .cnumber{
+		font-size: 26px;
+		font-weight: bold;
+	}
+	.ccard .ctitle{
+		font-size: 22px;
+		font-weight: bold;
+	}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow sticky-top">
+	<div class="container">
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <a class="navbar-brand" href="#">
+	  	<b style="color: #6b3eb3;font-size: 22px;">PLAYER PANEL</b>
+	  	
+	  </a>
+
+	  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+	    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+	      <li class="nav-item active">
+	        <a class="nav-link" href="{% url 'playerIndex' %}"><b>Dashboard</b> <span class="sr-only">(current)</span></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="{% url 'listQuiz' %}"><b>View Quiz</b></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="{% url 'myMarks' %}"><b>My Marks</b></a>
+	      </li>
+	    </ul>
+	    <a href="{% url 'logout' %}" onclick="return confirm('Are you sure you want to logout ?');">
+	          <i class="fa fa-sign-out ml-3" style="color: #6b3eb3;"></i> Log Out
+	    </a>
+	    <span class="ml-4">
+	    	<b>
+	    		<span style="color:#e53e1e;">Welcome </span> {{request.user.username}}
+	    	</b>
+	    </span>
+	  </div>
+	</div>
+</nav>
+{% block body %}{% endblock %}
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="static/WOW/dist/wow.js"></script>
+  <script>
+    wow = new WOW(
+      {
+        animateClass: 'animated',
+        offset:       100,
+        callback:     function(box) {
+          console.log("WOW: animating <" + box.tagName.toLowerCase() + ">")
+        }
+      }
+    );
+    wow.init();
+    document.getElementById('moar').onclick = function() {
+      var section = document.createElement('section');
+      section.className = 'section--purple wow fadeInDown';
+      this.parentNode.insertBefore(section, this);
+    };
+  </script>
+</body>
+</html>

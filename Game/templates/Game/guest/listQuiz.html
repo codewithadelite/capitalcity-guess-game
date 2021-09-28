@@ -1,0 +1,47 @@
+{% extends 'Game/guest/base.html' %}
+
+{% block title %}
+	DASHBOARD
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+		<div class="breadcrumb bg-light">
+			<span class="breadcrumb-title text-dark">
+				<b>
+					Quiz List
+				</b>
+			</span>
+		</div>
+		<div class="row d-flex justify-content-center">
+			<div class="col-md-8">
+				{% for quiz in quizes %}
+					<div class="card pcard bg-light mt-2">
+						<div class="card-content">
+							<div class="card-body">
+								<h4><b>{{ quiz.name }}</b></h4>
+								{% if quiz.is_activated %}
+									{% if quiz.id in quiz_done %}
+										<span class="badge badge-success">
+											You've already done this quiz
+										</span>
+									{% else %}
+									<a href="{% url 'selectGuess' quiz.id %}">
+										<button class="btn btn-primary btn-sm btn-rounded">
+											<b>Take Quiz</b>
+										</button>
+									</a>
+									{% endif %}
+								{% else %}
+									<span class="badge badge-danger">
+										Deactive
+									</span>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

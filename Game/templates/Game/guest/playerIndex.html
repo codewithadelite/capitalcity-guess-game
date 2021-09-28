@@ -1,0 +1,127 @@
+{% extends 'Game/guest/base.html' %}
+
+{% block title %}
+	DASHBOARD
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+		<div class="breadcrumb bg-light">
+			<span class="breadcrumb-title text-dark">
+				<b>
+					Dashboard
+				</b>
+			</span>
+		</div>
+		<div class="row crow">
+			<div class="col-md-4">
+				<a href="{% url 'listQuiz' %}">
+					<div class="card ccard">
+						<div class="card-content">
+							<div class="card-body">
+								<p>
+									<span class="cnumber">
+										{{ total_quiz }}
+									</span>
+								</p>
+								<p>
+									<span class="ctitle">
+										ALL QUIZES
+									</span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4">
+				<a href="#">
+					<div class="card ccard">
+						<div class="card-content">
+							<div class="card-body">
+								<p>
+									<span class="cnumber">
+										{{ total_quiz_active }}
+									</span>
+								</p>
+								<p>
+									<span class="ctitle">
+										ACTIVATED QUIZ
+									</span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4">
+				<a href="#">
+					<div class="card ccard">
+						<div class="card-content">
+							<div class="card-body">
+								<p>
+									<span class="cnumber">
+										{{ total_quiz_done }}
+									</span>
+								</p>
+								<p>
+									<span class="ctitle">
+										QUIZ DONE
+									</span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="row d-flex justify-content-center mt-5 mb-5">
+			<div class="col-md-10 mb-5">
+				<canvas id="myChart" style="width: 100%;"></canvas>
+			</div>
+		</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@3/dist/chart.min.js"></script>
+
+	<script>
+	var labe_name = [];
+	var labe_data = [];
+
+	{% if charts %}
+		{% for chart in charts %}
+			labe_name.push("{{ chart.quiz.name }}");
+			{% if chart.is_true %}
+				labe_data.push("1");
+			{% else %}
+				labe_data.push("0");
+			{% endif %}
+		{% endfor %}
+	{% endif %}
+	console.log(labe_name);
+	var ctx = document.getElementById('myChart').getContext('2d');
+	var myChart = new Chart(ctx, {
+	    type: 'line',
+	    data: {
+	        labels: labe_name,
+	        datasets: [{
+	            label: 'QUIZ',
+	            data: labe_data,
+	            backgroundColor: [
+	                'green'
+	            ],
+	            borderColor: [
+	                'rgba(74, 64, 144, 1)'
+	            ],
+	            borderWidth: 4
+	        }]
+	    },
+	    options: {
+	        scales: {
+	            y: {
+	                beginAtZero: true
+	            }
+	        }
+	    }
+	});
+	</script>
+{% endblock %}

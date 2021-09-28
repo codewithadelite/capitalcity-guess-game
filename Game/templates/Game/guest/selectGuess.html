@@ -1,0 +1,41 @@
+{% extends 'Game/guest/base.html' %}
+
+{% block title %}
+	DASHBOARD
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+		<div class="breadcrumb bg-light">
+			<span class="breadcrumb-title text-dark">
+				<b>
+					Guess Selection
+				</b>
+			</span>
+		</div>
+		<div>
+			<h3 class="text-center text-dark">
+				<b>
+					Welcome! Your time to fill in <span style="font-weight: bold; color:#e53e1e;">{{ quiz_name }}</span> is not limited. But keep in mind that you only have one attempt. Good luck :-)
+				</b>
+			</h3>
+			<h3 class="text-center text-dark mt-5">
+				<b style="color:#e53e1e; margin-top: 20px;">
+					Select what you want to guess !
+				</b>
+			</h3>
+			<div class="row d-flex justify-content-center">
+				<a href="{% url 'playCity' quiz_id %}">
+					<button class="btn btn-primary px-5 py-3 ml-2">
+						<b>I Want To Guess City</b>
+					</button>
+				</a>
+				<a href="{% url 'playCountry' quiz_id %}">
+					<button class="btn btn-success px-4 py-3 ml-2">
+						<b>I Want To Guess Country</b>
+					</button>
+				</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}

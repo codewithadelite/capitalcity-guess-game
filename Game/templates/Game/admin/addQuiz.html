@@ -1,0 +1,47 @@
+{% extends 'Game/admin/base.html' %}
+
+{% block title %}
+	DASHBOARD
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+		<div class="breadcrumb bg-light">
+			<span class="breadcrumb-title text-dark">
+				<b>
+					Add Quiz
+				</b>
+			</span>
+		</div>
+		<div class="mt-2">
+			<div class="row d-flex justify-content-center">
+				<div class="col-md-6">
+					<div class="card">
+						<div class="card-content">
+							<div class="card-body">
+								<form action="#" method="POST">
+									{% if messages %}
+										{% for message in messages %}
+											<div class="alert alert-success">
+												{{ message }}
+											</div>
+										{% endfor %}
+									{% endif %}
+									{% csrf_token %}
+									<h5>ADD QUIZ</h5>
+									<div class="form-group">
+										<label for="id_name"><b>Quiz Name</b></label>
+										<input type="text" name="name" maxlength="255" required id="id_name" class="form-control">
+									</div>
+									<div class="form-group">
+										<input type="submit" style="font-weight: bold;" name="" class="btn btn-primary" value="Add Quiz">
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

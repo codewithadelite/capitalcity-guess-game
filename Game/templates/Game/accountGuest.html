@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>LOGIN</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
+
+<style type="text/css">
+	body{
+		font-family: 'Montserrat', sans-serif;
+		background-image: url(bg-cont2.jpg);
+		height: 90vh;
+		background-size: cover;
+	}
+	#icon{
+		border-radius: 0px 3px 3px 0px;
+	}
+	form{
+		font-weight: 900;
+	}
+	.btn-primary{
+		background-color: #4A4090;
+	}
+	.btn-outline-primary{
+		color: #4A4090 !important;
+		border-color: #4A4090; 
+	}
+	a{
+		color: #4A4090;
+	}
+</style>
+</head>
+<body>
+<div class="content">
+	<div class="container mt-5">
+		<div class="row holder bg-light">
+			<div class="col-md-5" style="border-right: 2px groove;">
+				<div class="container">
+					<div class="card mt-5">
+						<div class="card-content p-3">
+							<div class="card-body">
+								<h4 class="text-center">Create Player Account</h4>
+								<form action="{% url 'accountGuest' %}" method="POST">
+									{% csrf_token %}
+									<div class="form-group">
+										<label for="username">Username</label>
+										<div class="input-group">
+											<input type="text" class="form-control" name="username" maxlength="255">
+											<i class="fa fa-user input-group-addon p-3 px-4 btn btn-outline-primary disabled" id="icon"></i>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="username">Email</label>
+										<div class="input-group">
+											<input type="email" class="form-control" name="email" maxlength="255">
+											<i class="fa fa-envelope input-group-addon p-3 px-4 btn btn-outline-primary disabled" id="icon"></i>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="username">Password</label>
+										<div class="input-group">
+											<input type="password" class="form-control" name="password1" maxlength="255">
+											<i class="fa fa-lock input-group-addon p-3 px-4 btn btn-outline-primary disabled" id="icon"></i>
+										</div>
+										<ul>
+											<li class="text-danger">Password must contain atleast 8 characters</li>
+											<li class="text-danger">Password must not be somehow similar to your username</li>
+										</ul>
+									</div>
+									<div class="form-group">
+										<label for="username">Confirm Password</label>
+										<div class="input-group">
+											<input type="password" class="form-control" name="password2" maxlength="255">
+											<i class="fa fa-lock input-group-addon p-3 px-4 btn btn-outline-primary disabled" id="icon"></i>
+										</div>
+									</div>
+									<div class="form-group">
+										<input type="submit" class="btn btn-primary btn-block" name="" value="CREATE ACCOUNT">
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div class="text-center mt-4 mb-4">
+						<span style="font-weight: 900;">&copy;2021 Developed By Adelite Niyonshuti Shema | <a href="{% url 'home' %}">CAPITAL CITY</a></span>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-7" >
+				<img src="{% static 'images/login3.svg' %}" style="width: 100%;">
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

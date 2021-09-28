@@ -1,0 +1,60 @@
+{% extends 'Game/admin/base.html' %}
+
+{% block title %}
+	DASHBOARD
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+		<div class="breadcrumb bg-light">
+			<span class="breadcrumb-title text-dark">
+				<b>
+					Players List
+				</b>
+			</span>
+		</div>
+		<div class="mt-2">
+		
+			<table class="table table-collapse table-hover table-bordered">
+				<thead>
+					<th>Names</th>
+					<th>Status</th>
+					<th>Action</th>
+				</thead>
+				<tbody>
+					{% for player in players %}
+						<tr>
+							<td> <b> {{ player.name }} </b></td>
+							<td>
+								{% if player.is_activated %}
+									<span class="badge badge-success p-1"><b>Activated</b></span>
+								{% else %}
+									<span class="badge badge-danger p-1"><b>Deactivated</b></span>
+								{% endif %}
+
+							</td>
+							<td>
+								
+								{% if player.is_activated %}
+								<a href="{% url 'statusPlayer' player.id %}" onclick="return confirm('Are you sure you want to Deactivate this player ?');">
+									<button class="btn btn-danger btn-sm px-3">
+										<b><i class="fa fa-pencil"></i> Deactivate</b>
+									</button>
+								</a>
+								
+								{% else %}
+								<a href="{% url 'statusPlayer' player.id %}" onclick="return confirm('Are you sure you want to Activate this player ?');">
+									<button class="btn btn-primary btn-sm px-4">
+										<b><i class="fa fa-pencil"></i> Activate</b>
+									</button>
+								</a>
+								
+								{% endif %}
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}

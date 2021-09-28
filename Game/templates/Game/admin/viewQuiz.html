@@ -1,0 +1,77 @@
+{% extends 'Game/admin/base.html' %}
+
+{% block title %}
+	DASHBOARD
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+		<div class="breadcrumb bg-light">
+			<span class="breadcrumb-title text-dark">
+				<b>
+					Quiz List
+				</b>
+			</span>
+		</div>
+		<div class="mt-2">
+			<div class="mt-2 mb-2">
+				<a href="{% url 'addQuiz' %}">
+					<button class="btn btn-primary btn-sm mb-2" style="float: right;">
+						<b>Add Quiz</b>
+					</button>
+				</a>
+			</div>
+			<table class="table table-collapse table-hover table-bordered">
+				<thead>
+					<th>Name</th>
+					<th>Status</th>
+					<th>Action</th>
+				</thead>
+				<tbody>
+					{% for quiz in quizes %}
+						<tr>
+							<td> <b> {{ quiz.name }} </b></td>
+							<td>
+								{% if quiz.is_activated %}
+									<span class="badge badge-success p-1"><b>Activated</b></span>
+								{% else %}
+									<span class="badge badge-danger p-1"><b>Deactivated</b></span>
+								{% endif %}
+
+							</td>
+							<td>
+								
+								{% if quiz.is_activated %}
+								<a href="{% url 'statusQuiz' quiz.id %}" onclick="return confirm('Are you sure you want to Deactivate this Quiz ?');">
+									<button class="btn btn-danger btn-sm px-3">
+										<b><i class="fa fa-pencil"></i> Deactivate</b>
+									</button>
+								</a>
+								
+								{% else %}
+								<a href="{% url 'statusQuiz' quiz.id %}" onclick="return confirm('Are you sure you want to Activate this Quiz ?');">
+									<button class="btn btn-primary btn-sm px-4">
+										<b><i class="fa fa-pencil"></i> Activate</b>
+									</button>
+								</a>
+								
+								{% endif %}
+
+								<a href="{% url 'editQuiz' quiz.id %}" >
+									<button class="btn btn-primary btn-sm">
+										<i class="fa fa-pencil"></i>
+									</button>
+								</a>
+								<a href="{% url 'deleteQuiz' quiz.id %}" onclick="return confirm('Are you sure you want to delete this record ?');">
+									<button class="btn btn-primary btn-sm">
+										<i class="fa fa-trash"></i>
+									</button>
+								</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}
